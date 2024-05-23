@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>PandABlocks_server &#8212; PandABlocks-server 0.1.dev1164+g4a463c0 documentation</title>
+    <title>PandABlocks_server &#8212; PandABlocks-server 0.1.dev1167+gbca606b documentation</title>
   
   
   
@@ -38,7 +38,7 @@
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script src="_static/documentation_options.js?v=dfc1b168"></script>
+    <script src="_static/documentation_options.js?v=8322b777"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
@@ -54,7 +54,7 @@
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Tutorials" href="tutorials.html" />
+    <link rel="next" title="Reference" href="reference.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -149,27 +149,6 @@
 <nav class="navbar-nav">
   <ul class="bd-navbar-elements navbar-nav">
     
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="tutorials.html">
-                        Tutorials
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="how-to.html">
-                        How-to Guides
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="explanations.html">
-                        Explanations
-                      </a>
-                    </li>
-                
-
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="reference.html">
                         Reference
@@ -309,27 +288,6 @@ document.write(`
   <ul class="bd-navbar-elements navbar-nav">
     
                     <li class="nav-item">
-                      <a class="nav-link nav-internal" href="tutorials.html">
-                        Tutorials
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="how-to.html">
-                        How-to Guides
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="explanations.html">
-                        Explanations
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
                       <a class="nav-link nav-internal" href="reference.html">
                         Reference
                       </a>
@@ -436,13 +394,21 @@ document.write(`
                 <article class="bd-article">
                   
   <p><a class="reference external" href="https://github.com/PandABlocks/PandABlocks-server/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/PandABlocks/PandABlocks-server/actions/workflows/ci.yml/badge.svg" /></a>
-<a class="reference external" href="https://codecov.io/gh/PandABlocks/PandABlocks-server"><img alt="Coverage" src="https://codecov.io/gh/PandABlocks/PandABlocks-server/branch/main/graph/badge.svg" /></a></p>
-<p><a class="reference external" href="https://opensource.org/licenses/Apache-2.0"><img alt="License" src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" /></a></p>
+<a class="reference external" href="https://opensource.org/licenses/Apache-2.0"><img alt="License" src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" /></a></p>
 <section id="pandablocks-server">
 <h1>PandABlocks_server<a class="headerlink" href="#pandablocks-server" title="Link to this heading">#</a></h1>
-<p>TCP server exposing an ACII interface to functional blocks</p>
-<p>This is where you should write a short paragraph that describes what your module does,
-how it does it, and why people should use it.</p>
+<p>The Panda socket server provides a bridge between the register interface to the
+FPGA firmware controlling the Panda hardware and users and other software.  The
+interface provided by this server is designed to be simple and robust.</p>
+<p>The Panda firmware is structured into numerous functional blocks, with each
+block configured via a number of fields.  This structure is directly reflected
+in the functional interface provided by this server: most commands read or write
+specific fields.</p>
+<p>The socket server publishes two socket end points, one for configuration control
+the other for streamed data capture.  The configuration control socket accepts
+simple ASCII commands and returns all data in readable ASCII format.  The data
+capture socket supports no commands and simply streams captured data in a
+lightly structured binary format.</p>
 <table class="table">
 <thead>
 <tr class="row-odd"><th class="head text-center"><p>Source</p></th>
@@ -451,88 +417,86 @@ how it does it, and why people should use it.</p>
 </thead>
 <tbody>
 <tr class="row-even"><td class="text-center"><p>Documentation</p></td>
-<td class="text-center"><p><a class="reference external" href="https://pandablocks.github.io/PandABlocks-server">https://pandablocks.github.io/PandABlocks-server</a></p></td>
+<td class="text-center"><p><a class="reference external" href="https://PandABlocks.github.io/PandABlocks-server">https://PandABlocks.github.io/PandABlocks-server</a></p></td>
 </tr>
-<tr class="row-odd"><td class="text-center"><p>Releases</p></td>
-<td class="text-center"><p><a class="github reference external" href="https://github.com/PandABlocks/PandABlocks-server/releases">PandABlocks/PandABlocks-server</a></p></td>
+<tr class="row-odd"><td class="text-center"><p>Changelog</p></td>
+<td class="text-center"><p><a class="github reference external" href="https://github.com/PandABlocks/PandABlocks-server/blob/master/CHANGELOG.rst">PandABlocks/PandABlocks-server</a></p></td>
 </tr>
 </tbody>
 </table>
-<p>This is where you should put some images or code snippets that illustrate
-some relevant examples. If it is a library then you might put some
-introductory code here:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">PandABlocks_server</span> <span class="kn">import</span> <span class="n">__version__</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hello PandABlocks_server </span><span class="si">{</span><span class="n">__version__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<section id="configuration-interface">
+<h2>Configuration Interface<a class="headerlink" href="#configuration-interface" title="Link to this heading">#</a></h2>
+<p>Configuration commands are sent as newline (ASCII character 0x0A) terminated
+strings and all responses are also newline terminated.  Three basic forms of
+command are accepted:</p>
+<p>Query commands.
+These commands must be terminated by a single <code class="docutils literal notranslate"><span class="pre">?</span></code> character.  The three
+possible responses are: an error message, a single value, or a list of
+values.</p>
+<p>Assignment commands.
+These commands contain an <code class="docutils literal notranslate"><span class="pre">=</span></code> character, and are used for assigning values
+to fields.  The two possible responses are an error message or <code class="docutils literal notranslate"><span class="pre">OK</span></code>.</p>
+<p>Table assignment.
+Any command containing a <code class="docutils literal notranslate"><span class="pre">&lt;</span></code> character (not preceded by <code class="docutils literal notranslate"><span class="pre">?</span></code> or <code class="docutils literal notranslate"><span class="pre">=</span></code>) is
+a table assignment command.  The initial command may be followed by any
+number of lines of text, and <em>must</em> be terminated by an empty line.  The two
+possible responses are an error message or <code class="docutils literal notranslate"><span class="pre">OK</span></code>.</p>
+<p>The four possible responses are:</p>
+<p><code class="docutils literal notranslate"><span class="pre">ERR</span></code> error-message
+An error response is always sent as <code class="docutils literal notranslate"><span class="pre">ERR</span></code> followed by an error message.</p>
+<p><code class="docutils literal notranslate"><span class="pre">OK</span></code>
+Successful completion of either form of assignment command generates the
+<code class="docutils literal notranslate"><span class="pre">OK</span></code> response.</p>
+<p><code class="docutils literal notranslate"><span class="pre">OK</span> <span class="pre">=</span></code>\ value
+Successful completion of a query command returning a single value returns
+the value preceded by <code class="docutils literal notranslate"><span class="pre">OK</span> <span class="pre">=</span></code>.</p>
+<p>Multi-line response
+Successful completion of a query command returning multiple values returns
+each value on a line by itself starting with <code class="docutils literal notranslate"><span class="pre">!</span></code> and ends the sequence
+with a line containing only <code class="docutils literal notranslate"><span class="pre">.</span></code>.</p>
+</section>
+<section id="example-commands">
+<h2>Example Commands<a class="headerlink" href="#example-commands" title="Link to this heading">#</a></h2>
+<p>In the examples below, the command sent is shown preceded by <code class="docutils literal notranslate"><span class="pre">&lt;</span></code> and the
+response with <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>: this is the syntax used by the helper tool
+<code class="docutils literal notranslate"><span class="pre">simulation/tcp_client.py</span></code>:</p>
+<p>Simple server identification command including version information:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="w">    </span>&lt;<span class="w"> </span>*IDN?
+<span class="w">    </span>&gt;<span class="w"> </span><span class="nv">OK</span><span class="w"> </span><span class="o">=</span>PandA<span class="w"> </span>SW:<span class="w"> </span>330bd94-dirty<span class="w"> </span>FPGA:<span class="w"> </span><span class="m">0</span>.1.9<span class="w"> </span>d1275f61<span class="w"> </span><span class="m">00000000</span>
 </pre></div>
 </div>
-<p>Or if it is a commandline tool then you might put some example commands here:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">PandABlocks_server</span> <span class="o">--</span><span class="n">version</span>
+<p>Interrogate list of fields provided by the <code class="docutils literal notranslate"><span class="pre">TTLIN</span></code> block:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="w">    </span>&lt;<span class="w"> </span>TTLIN.*?
+<span class="w">    </span>&gt;<span class="w"> </span>!VAL<span class="w"> </span><span class="m">0</span><span class="w"> </span>bit_out
+<span class="w">    </span>&gt;<span class="w"> </span>!TERM<span class="w"> </span><span class="m">1</span><span class="w"> </span>param<span class="w"> </span>enum
+<span class="w">    </span>&gt;<span class="w"> </span>.
 </pre></div>
 </div>
+<p>Interrogate input termination for <code class="docutils literal notranslate"><span class="pre">TTLIN1</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="w">    </span>&lt;<span class="w"> </span>TTLIN1.TERM?
+<span class="w">    </span>&gt;<span class="w"> </span><span class="nv">OK</span><span class="w"> </span><span class="o">=</span>High-Z
+</pre></div>
+</div>
+<p>Set input termination:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="w">    </span>&lt;<span class="w"> </span>TTLIN1.TERM<span class="o">=</span><span class="m">50</span>-Ohm
+<span class="w">    </span>&gt;<span class="w"> </span>OK
+</pre></div>
+</div>
+</section>
+<section id="streaming-capture-interface">
+<h2>Streaming Capture Interface<a class="headerlink" href="#streaming-capture-interface" title="Link to this heading">#</a></h2>
+<p>All bit and position values received and generated by PandA can be captured on
+an internally generated trigger and streamed to a data capture port.  A variety
+of data capture, processing, and delivery options can be selected.</p>
+</section>
+<section id="building">
+<h2>Building<a class="headerlink" href="#building" title="Link to this heading">#</a></h2>
+</section>
 <section id="how-the-documentation-is-structured">
 <h2>How the documentation is structured<a class="headerlink" href="#how-the-documentation-is-structured" title="Link to this heading">#</a></h2>
-<p>Documentation is split into <a class="reference external" href="https://diataxis.fr">four categories</a>, also accessible from links in the top bar.</p>
 <!-- https://sphinx-design.readthedocs.io/en/latest/grids.html -->
 <div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
-<div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 sd-g-4 sd-g-xs-4 sd-g-sm-4 sd-g-md-4 sd-g-lg-4 docutils">
-<div class="sd-col sd-d-flex-row docutils">
-<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
-<div class="sd-card-body docutils">
-<div class="sd-card-title sd-font-weight-bold docutils">
-<svg version="4.0.0.63c5cb3" width="2.0em" height="2.0em" class="sd-material-icon sd-material-icon-directions_walk" viewBox="0 0 24 24" aria-hidden="true"><path d="M0 0h24v24H0z" fill="none"></path><path d="M13.5 5.5c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zM9.8 8.9L7 23h2.1l1.8-8 2.1 2v6h2v-7.5l-2.1-2 .6-3C14.8 12 16.8 13 19 13v-2c-1.9 0-3.5-1-4.3-2.4l-1-1.6c-.4-.6-1-1-1.7-1-.3 0-.5.1-.8.1L6 8.3V13h2V9.6l1.8-.7"></path></svg></div>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="tutorials/test.html">Test</a></li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
-<div class="sd-card-footer docutils">
-<p class="sd-card-text">Tutorials for installation and typical usage. New users start here.</p>
-</div>
-</div>
-</div>
-<div class="sd-col sd-d-flex-row docutils">
-<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
-<div class="sd-card-body docutils">
-<div class="sd-card-title sd-font-weight-bold docutils">
-<svg version="4.0.0.63c5cb3" width="2.0em" height="2.0em" class="sd-material-icon sd-material-icon-directions" viewBox="0 0 24 24" aria-hidden="true"><path d="M0 0h24v24H0z" fill="none"></path><path d="M21.71 11.29l-9-9c-.39-.39-1.02-.39-1.41 0l-9 9c-.39.39-.39 1.02 0 1.41l9 9c.39.39 1.02.39 1.41 0l9-9c.39-.38.39-1.01 0-1.41zM14 14.5V12h-4v3H8v-4c0-.55.45-1 1-1h5V7.5l3.5 3.5-3.5 3.5z"></path></svg></div>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="how-to.html">How-to Guides</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="how-to/test.html">Test</a></li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
-<div class="sd-card-footer docutils">
-<p class="sd-card-text">Practical step-by-step guides for the more experienced user.</p>
-</div>
-</div>
-</div>
-<div class="sd-col sd-d-flex-row docutils">
-<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
-<div class="sd-card-body docutils">
-<div class="sd-card-title sd-font-weight-bold docutils">
-<svg version="4.0.0.63c5cb3" width="2.0em" height="2.0em" class="sd-material-icon sd-material-icon-info" viewBox="0 0 24 24" aria-hidden="true"><path d="M0 0h24v24H0z" fill="none"></path><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"></path></svg></div>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="explanations.html">Explanations</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="explanations/test.html">Test</a></li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
-<div class="sd-card-footer docutils">
-<p class="sd-card-text">Explanations of how it works and why it works that way.</p>
-</div>
-</div>
-</div>
+<div class="sd-row sd-row-cols-1 sd-row-cols-xs-1 sd-row-cols-sm-1 sd-row-cols-md-1 sd-row-cols-lg-1 sd-g-4 sd-g-xs-4 sd-g-sm-4 sd-g-md-4 sd-g-lg-4 docutils">
 <div class="sd-col sd-d-flex-row docutils">
 <div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
 <div class="sd-card-body docutils">
@@ -558,7 +522,7 @@ introductory code here:</p>
 </div>
 </div>
 <div class="sd-card-footer docutils">
-<p class="sd-card-text">Technical reference material including APIs and release notes.</p>
+<p class="sd-card-text">Technical reference material.</p>
 </div>
 </div>
 </div>
@@ -578,11 +542,11 @@ introductory code here:</p>
                   
 <div class="prev-next-area">
     <a class="right-next"
-       href="tutorials.html"
+       href="reference.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Tutorials</p>
+        <p class="prev-next-title">Reference</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
