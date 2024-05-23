@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Building and Configuring Panda Server &#8212; PandABlocks-server 0.1.dev1164+g4a463c0 documentation</title>
+    <title>Starting Panda Server &#8212; PandABlocks-server 0.1.dev1164+g4a463c0 documentation</title>
   
   
   
@@ -44,7 +44,7 @@
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=30646c52"></script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'reference/building';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'reference/startup';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.15.2';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://PandABlocks.github.io/PandABlocks-server/switcher.json';
@@ -54,8 +54,8 @@
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Data Capture" href="capture.html" />
-    <link rel="prev" title="Changelog" href="CHANGELOG.html" />
+    <link rel="next" title="Supporting Documentation" href="support.html" />
+    <link rel="prev" title="Blocks, Fields and Attributes" href="fields.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -422,13 +422,13 @@ document.write(`
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="CHANGELOG.html">Changelog</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Building and Configuring Panda Server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="building.html">Building and Configuring Panda Server</a></li>
 <li class="toctree-l1"><a class="reference internal" href="capture.html">Data Capture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="commands.html">Command Interface</a></li>
 <li class="toctree-l1"><a class="reference internal" href="config.html">Configuration Files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="extension.html">Extension Server</a></li>
 <li class="toctree-l1"><a class="reference internal" href="fields.html">Blocks, Fields and Attributes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="startup.html">Starting Panda Server</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Starting Panda Server</a></li>
 <li class="toctree-l1"><a class="reference internal" href="support.html">Supporting Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../genindex.html">Index</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://github.com/PandABlocks/PandABlocks-server/releases">Release Notes</a></li>
@@ -472,7 +472,7 @@ document.write(`
     
     <li class="breadcrumb-item"><a href="../reference.html" class="nav-link">Reference</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page">Building...</li>
+    <li class="breadcrumb-item active" aria-current="page">Starting...</li>
   </ul>
 </nav>
 </div>
@@ -489,108 +489,70 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="building-and-configuring-panda-server">
-<h1>Building and Configuring Panda Server<a class="headerlink" href="#building-and-configuring-panda-server" title="Link to this heading">#</a></h1>
-<p>Setting up the build for the Panda Socket Server requires configuring a number
-of dependencies and creating a suitable <code class="docutils literal notranslate"><span class="pre">CONFIG</span></code> file in the root directory so
-that they can be found.</p>
-<section id="dependencies">
-<h2>Dependencies<a class="headerlink" href="#dependencies" title="Link to this heading">#</a></h2>
-<p>The following dependencies must be configured before any part of the server can
-be built.</p>
-<dl class="simple">
-<dt>Zynq cross-compiler toolchain</dt><dd><p>This can be downloaded as part of the Xilinx Vivado build environment for
-working with Zynq, or probably any ARMv7-A cross-compiler can be used.  This
-is needed to build all applications running on Panda.</p>
+  <section id="starting-panda-server">
+<h1>Starting Panda Server<a class="headerlink" href="#starting-panda-server" title="Link to this heading">#</a></h1>
+<p>The Panda socket server is normally automatically started at boot time or when
+the <code class="docutils literal notranslate"><span class="pre">zpkg-daemon</span></code> script is run.  The server is started and stopped by the
+script <code class="docutils literal notranslate"><span class="pre">etc/panda-server</span></code> installed in <code class="docutils literal notranslate"><span class="pre">/opt/etc/init.d</span></code>.</p>
+<p>The server can optionally be started from the command line, in which case the
+following arguments are supported:</p>
+<dl>
+<dt><code class="docutils literal notranslate"><span class="pre">-h</span></code></dt><dd><p>This option shows the help text for server, listing all the available
+command line options.</p>
 </dd>
-<dt>PandABlocks-FPGA</dt><dd><p>This part of the Panda project must be available before the server can be
-built, as it contains a configuration file defining the low level register
-interface to the Panda firmware.</p>
+<dt><code class="docutils literal notranslate"><span class="pre">-p</span></code> port</dt><dd><p>This specifies the socket port to be used for configuration commands.  The
+default value is 8888.</p>
 </dd>
-<dt>PandABlocks-rootfs</dt><dd><p>This part of the Panda project is required in order to provide a working
-kernel build tree, and to provide the zpkg build tool.</p>
+<dt><code class="docutils literal notranslate"><span class="pre">-d</span></code> port</dt><dd><p>This specifies the socket port to be used for data capture.  The default
+value is 8889.</p>
 </dd>
-</dl>
-</section>
-<section id="setting-up-the-config-file">
-<h2>Setting up the <code class="docutils literal notranslate"><span class="pre">CONFIG</span></code> file<a class="headerlink" href="#setting-up-the-config-file" title="Link to this heading">#</a></h2>
-<p>Start by copying the file <code class="docutils literal notranslate"><span class="pre">CONFIG.example</span></code> to <code class="docutils literal notranslate"><span class="pre">CONFIG</span></code> in the base
-directory, and edit the file by commenting out lines as appropriate and editing
-them.</p>
-<p>The following symbols must be set to point to the appropriate dependencies:</p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">BINUTILS_DIR</span></code></dt><dd><p>If the Zynq cross-compiler toolchain is not on the path, this must be set in
-order to build the kernel module and the target build.  This symbol is not
-required for building the simulation server or the documentation.</p>
+<dt><code class="docutils literal notranslate"><span class="pre">-R</span></code></dt><dd><p>This can be specified to allow socket reuse via the <code class="docutils literal notranslate"><span class="pre">SO_REUSEADDR</span></code> socket
+option.</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">KERNEL_DIR</span></code></dt><dd><p>In order to build the kernel module, this symbol must be pointed to the
-kernel build tree generated by the PandABlocks-roots build.</p>
+<dt><code class="docutils literal notranslate"><span class="pre">-c</span></code> config-dir</dt><dd><p>This specifies the directory where the <code class="docutils literal notranslate"><span class="pre">config</span></code>, <code class="docutils literal notranslate"><span class="pre">registers</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">description</span></code> files will be loaded from.  This argument must be specified.</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">PANDA_ROOTFS</span></code></dt><dd><p>The zpkg build tool is found here.</p>
+<dt><code class="docutils literal notranslate"><span class="pre">-f</span></code> persistence-file</dt><dd><p>This specifies where the persistence state will be loaded from on startup
+and saved during operation.  See the <code class="docutils literal notranslate"><span class="pre">-t</span></code> option below for notes on how
+this file is updated.  If this is not specified then the persistence state
+will not be saved.</p>
 </dd>
-</dl>
-<p>The following symbols can all be left at their default values:</p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">BUILD_DIR</span></code></dt><dd><p>This configures where the built files will be placed.</p>
+<dt><code class="docutils literal notranslate"><span class="pre">-t</span></code> [poll] [“:” [holdoff] [“:” backoff]]</dt><dd><p>This option sets three parameters (in seconds) controlling the pacing of
+writes to the persistence file.  The behaviour of the system is as follows:
+every <em>poll</em> seconds the internal state of the server is checked for
+configuration changes.  If a configuration change is checked then there is a
+pause of a further <em>holdoff</em> seconds before the updated state is written.
+Finally, there is a pause of <em>backoff</em> seconds before polling for internal
+changes resumes.</p>
+<p>Default values are: <em>poll</em> = 2, <em>holdoff</em> = 10, <em>backoff</em> = 60.  The
+somewhat complex syntax show above allows all or any of these values to be
+set with a single <code class="docutils literal notranslate"><span class="pre">-t</span></code> option.  For example, <code class="docutils literal notranslate"><span class="pre">-t:20</span></code> specifies <em>holdoff</em>
+= 20, other values unchaged.</p>
+<p>The intention of this timed behaviour is to reduce file write impact while
+still keeping on top of changes.  With default settings all parameters will
+be written to the persistence file within 72 seconds.</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">PYTHON</span></code></dt><dd><p>This configures which Python interpreter will be used for building.</p>
+<dt><code class="docutils literal notranslate"><span class="pre">-D</span></code></dt><dd><p>This option requests that the server is run as a daemon.  This is the normal
+mode of operation when running as a server, but is generally omitted for
+debug.</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">SPHINX_BUILD</span></code></dt><dd><p>The sphinx-build Python script used for building the documentation.</p>
+<dt><code class="docutils literal notranslate"><span class="pre">-p</span></code> pid-file</dt><dd><p>If specified the given file is written with the process ID of the server,
+and will be deleted on exit.</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">DEFAULT_TARGETS</span></code></dt><dd><p>This determines which makefile targets are generated when <code class="docutils literal notranslate"><span class="pre">make</span></code> is run
-without specifying a particular target, or when <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">default</span></code> is run.</p>
+<dt><code class="docutils literal notranslate"><span class="pre">-T</span></code></dt><dd><p>This mode is used for config file validation only: the server exits
+immediately after loading configuration files.</p>
 </dd>
-</dl>
-</section>
-<section id="build-targets">
-<h2>Build Targets<a class="headerlink" href="#build-targets" title="Link to this heading">#</a></h2>
-<p>The following build targets for the top level makefile are useful:</p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">default</span></code></dt><dd><p>Builds all the targets specified by <code class="docutils literal notranslate"><span class="pre">$(DEFAULT_TARGETS)</span></code>, by default
-this list is: <code class="docutils literal notranslate"><span class="pre">driver</span></code>, <code class="docutils literal notranslate"><span class="pre">server</span></code>, <code class="docutils literal notranslate"><span class="pre">sim_server</span></code>, <code class="docutils literal notranslate"><span class="pre">docs</span></code>, <code class="docutils literal notranslate"><span class="pre">zpkg</span></code>.</p>
+<dt><code class="docutils literal notranslate"><span class="pre">-M</span></code> MAC-list</dt><dd><p>If specified then the given file is used to initialise up to four MAC
+address registers.  The file consists of any number of comment
+lines (comment lines start with <code class="docutils literal notranslate"><span class="pre">#</span></code> in the first column) together with
+four MAC address lines, each of which is either blank (newline <code class="docutils literal notranslate"><span class="pre">\n</span></code> only)
+or is a six octet MAC address written as 2 digit hex numbers separated by
+colons.</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">driver</span></code></dt><dd><p>Builds the kernel driver module.</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">server</span></code></dt><dd><p>Builds the server version to run on Panda.</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">sim_server</span></code></dt><dd><p>Builds a simulation version of the server to run on the local PC.</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">docs</span></code></dt><dd><p>Builds the documentation.</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">zpkg</span></code></dt><dd><p>Builds the final <code class="docutils literal notranslate"><span class="pre">panda-server</span></code> zpgk file.</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">clean</span></code></dt><dd><p>Removes the entire <code class="docutils literal notranslate"><span class="pre">$(BUILD_DIR)</span></code> directory.</p>
+<dt><code class="docutils literal notranslate"><span class="pre">-X</span></code> port</dt><dd><p>If specified the server will attempt to connect to an extension server
+running locally and serving on the specified port.</p>
 </dd>
 </dl>
-</section>
-<section id="generated-files">
-<h2>Generated Files<a class="headerlink" href="#generated-files" title="Link to this heading">#</a></h2>
-<p>In the <code class="docutils literal notranslate"><span class="pre">$(BUILD_DIR)</span></code> directory the following subdirectories and files will be
-found.  In practice the <code class="docutils literal notranslate"><span class="pre">.zpg</span></code> file and <code class="docutils literal notranslate"><span class="pre">html/</span></code> directory will be wanted.</p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">driver/</span></code></dt><dd><p>The kernel module required for hardware access is built here.</p>
-</dd>
-</dl>
-<div class="line-block">
-<div class="line"><code class="docutils literal notranslate"><span class="pre">server/</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">sim_server/</span></code></div>
-</div>
-<blockquote>
-<div><p>These two directories are used to build the server to run on Panda, and
-a simulation server to run on the local PC.</p>
-</div></blockquote>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">html/</span></code></dt><dd><p>The documentation is built in html format in this directory.</p>
-</dd>
-</dl>
-<div class="line-block">
-<div class="line"><code class="docutils literal notranslate"><span class="pre">panda-server&#64;</span></code>version<code class="docutils literal notranslate"><span class="pre">.zpg</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">zpkg-panda-server/</span></code></div>
-</div>
-<blockquote>
-<div><p>A zpkg for the server is built here.</p>
-</div></blockquote>
-</section>
 </section>
 
 
@@ -604,20 +566,20 @@ a simulation server to run on the local PC.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="CHANGELOG.html"
+       href="fields.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Changelog</p>
+        <p class="prev-next-title">Blocks, Fields and Attributes</p>
       </div>
     </a>
     <a class="right-next"
-       href="capture.html"
+       href="support.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Data Capture</p>
+        <p class="prev-next-title">Supporting Documentation</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -632,25 +594,10 @@ a simulation server to run on the local PC.</p>
 
 
   <div class="sidebar-secondary-item">
-<div
-    id="pst-page-navigation-heading-2"
-    class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> On this page
-  </div>
-  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dependencies">Dependencies</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-the-config-file">Setting up the <code class="docutils literal notranslate"><span class="pre">CONFIG</span></code> file</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#build-targets">Build Targets</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generated-files">Generated Files</a></li>
-</ul>
-  </nav></div>
-
-  <div class="sidebar-secondary-item">
 
   
   <div class="tocsection editthispage">
-    <a href="https://github.com/PandABlocks/PandABlocks-server/edit/master/docs/reference/building.rst">
+    <a href="https://github.com/PandABlocks/PandABlocks-server/edit/master/docs/reference/startup.rst">
       <i class="fa-solid fa-pencil"></i>
       
       
@@ -665,7 +612,7 @@ a simulation server to run on the local PC.</p>
   <div class="sidebar-secondary-item">
 
   <div class="tocsection sourcelink">
-    <a href="../_sources/reference/building.rst.txt">
+    <a href="../_sources/reference/startup.rst.txt">
       <i class="fa-solid fa-file-lines"></i> Show Source
     </a>
   </div>
