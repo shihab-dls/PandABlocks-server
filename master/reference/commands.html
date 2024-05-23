@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Command Interface &#8212; PandABlocks-server 0.1.dev1147+gfa996b3 documentation</title>
+    <title>Command Interface &#8212; PandABlocks-server 0.1.dev1149+g7ec8253 documentation</title>
   
   
   
@@ -38,7 +38,7 @@
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script src="../_static/documentation_options.js?v=1b4cf78e"></script>
+    <script src="../_static/documentation_options.js?v=d8d910fb"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -642,36 +642,27 @@ below:</p>
 <td><p>List device blocks.</p></td>
 </tr>
 <tr class="row-even"><td><div class="line-block">
-<div class="line"><code class="docutils literal notranslate"><span class="pre">*DESC.</span></code> block <code class="docutils literal notranslate"><span class="pre">.</span></code>
-field[  <code class="docutils literal notranslate"><span class="pre">.</span></code>  attr]  <code class="docutils literal notranslate"><span class="pre">?</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">*DESC.</span></code> block  <code class="docutils literal notranslate"><span class="pre">.</span></code>
-field  <code class="docutils literal notranslate"><span class="pre">[].</span></code>  subfield
-<code class="docutils literal notranslate"><span class="pre">?</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">*DESC.</span></code> block<code class="docutils literal notranslate"><span class="pre">.</span></code>field[<code class="docutils literal notranslate"><span class="pre">.</span></code>attr]<code class="docutils literal notranslate"><span class="pre">?</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">*DESC.</span></code> block<code class="docutils literal notranslate"><span class="pre">.</span></code>field<code class="docutils literal notranslate"><span class="pre">[].</span></code>subfield<code class="docutils literal notranslate"><span class="pre">?</span></code></div>
 </div>
 </td>
 <td><p>Show description for field, attribute, or
 table subfield.</p></td>
 </tr>
 <tr class="row-odd"><td><div class="line-block">
-<div class="line"><code class="docutils literal notranslate"><span class="pre">*ENUMS.</span></code> block  <code class="docutils literal notranslate"><span class="pre">.</span></code>
-field[  <code class="docutils literal notranslate"><span class="pre">.</span></code>  attr]  <code class="docutils literal notranslate"><span class="pre">?</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">*ENUMS.</span></code> block  <code class="docutils literal notranslate"><span class="pre">.</span></code>
-field  <code class="docutils literal notranslate"><span class="pre">[].</span></code>  subfield
-<code class="docutils literal notranslate"><span class="pre">?</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">*ENUMS.</span></code> block<code class="docutils literal notranslate"><span class="pre">.</span></code>field[<code class="docutils literal notranslate"><span class="pre">.</span></code>attr]<code class="docutils literal notranslate"><span class="pre">?</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">*ENUMS.</span></code> block<code class="docutils literal notranslate"><span class="pre">.</span></code>field<code class="docutils literal notranslate"><span class="pre">[].</span></code>subfield<code class="docutils literal notranslate"><span class="pre">?</span></code></div>
 </div>
 </td>
 <td><p>List enumerations for field, attribute, or
 table subfield.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">*CHANGES</span></code>  [  <code class="docutils literal notranslate"><span class="pre">.</span></code>
-group]  <code class="docutils literal notranslate"><span class="pre">?</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">*CHANGES</span></code>[<code class="docutils literal notranslate"><span class="pre">.</span></code>group]<code class="docutils literal notranslate"><span class="pre">?</span></code></p></td>
 <td><p>Report changes to values.  <em>group</em> can be
 any of <code class="docutils literal notranslate"><span class="pre">CONFIG</span></code>, <code class="docutils literal notranslate"><span class="pre">BITS</span></code>, <code class="docutils literal notranslate"><span class="pre">POSN</span></code>,
 <code class="docutils literal notranslate"><span class="pre">READ</span></code>, <code class="docutils literal notranslate"><span class="pre">ATTR</span></code>, or <code class="docutils literal notranslate"><span class="pre">TABLE</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">*CHANGES</span></code>  [  <code class="docutils literal notranslate"><span class="pre">.</span></code>
-group]  <code class="docutils literal notranslate"><span class="pre">=</span></code>  [  <code class="docutils literal notranslate"><span class="pre">E</span></code>
-| <code class="docutils literal notranslate"><span class="pre">S</span></code>  ]</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">*CHANGES</span></code>[<code class="docutils literal notranslate"><span class="pre">.</span></code>group]<code class="docutils literal notranslate"><span class="pre">=</span></code>[<code class="docutils literal notranslate"><span class="pre">E</span></code>| <code class="docutils literal notranslate"><span class="pre">S</span></code>]</p></td>
 <td><p>Reset reported changes, <em>group</em> as above.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">*CAPTURE?</span></code></p></td>
@@ -680,7 +671,7 @@ group]  <code class="docutils literal notranslate"><span class="pre">=</span></c
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">*CAPTURE.*?</span></code></p></td>
 <td><p>List all fields that can be captured.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">*CAPTURE.</span></code>  name  <code class="docutils literal notranslate"><span class="pre">?</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">*CAPTURE.</span></code>name<code class="docutils literal notranslate"><span class="pre">?</span></code></p></td>
 <td><p>Interrogate capture options, <em>name</em> can be
 <code class="docutils literal notranslate"><span class="pre">OPTIONS</span></code> or <code class="docutils literal notranslate"><span class="pre">ENUMS</span></code>.</p></td>
 </tr>
@@ -693,15 +684,15 @@ group]  <code class="docutils literal notranslate"><span class="pre">=</span></c
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">*BITS?</span></code></p></td>
 <td><p>Enumerate possible bit bus positions.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">*VERBOSE=</span></code>  value</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">*VERBOSE=</span></code>value</p></td>
 <td><p>Control command logging.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">*PCAP.</span></code>  field  <code class="docutils literal notranslate"><span class="pre">?</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">*PCAP.</span></code>field<code class="docutils literal notranslate"><span class="pre">?</span></code></p></td>
 <td><p>Special position capture status fields.
 <em>field</em> can be any of <code class="docutils literal notranslate"><span class="pre">STATUS</span></code>,
 <code class="docutils literal notranslate"><span class="pre">CAPTURED</span></code>, or <code class="docutils literal notranslate"><span class="pre">COMPLETION</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">*PCAP.</span></code>  field  <code class="docutils literal notranslate"><span class="pre">=</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">*PCAP.</span></code>field<code class="docutils literal notranslate"><span class="pre">=</span></code></p></td>
 <td><p>Position capture actions.  <em>field</em> can be
 either <code class="docutils literal notranslate"><span class="pre">ARM</span></code>, or <code class="docutils literal notranslate"><span class="pre">DISARM</span></code>.</p></td>
 </tr>
