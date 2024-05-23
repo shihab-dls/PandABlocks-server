@@ -1,0 +1,918 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Configuration Files &#8212; PandABlocks-server 0.1.dev1161+g34784c6 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../_static/documentation_options.js?v=bb4781f6"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=30646c52"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'reference/config';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.15.2';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://PandABlocks.github.io/PandABlocks-server/switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'master';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner = false;
+        </script>
+    <link rel="icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Blocks, Fields and Attributes" href="fields.html" />
+    <link rel="prev" title="Command Interface" href="commands.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/PandA-logo-for-black-background.svg" class="logo__image only-light" alt=""/>
+    <script>document.write(`<img src="../_static/PandA-logo-for-black-background.svg" class="logo__image only-dark" alt=""/>`);</script>
+  
+  
+    <p class="title logo__title">PandABlocks-server</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../tutorials.html">
+                        Tutorials
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../how-to.html">
+                        How-to Guides
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../explanations.html">
+                        Explanations
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../reference.html">
+                        Reference
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/PandABlocks/PandABlocks-server" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/PandABlocks-server" title="PyPI" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fas fa-cube fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">PyPI</span></a>
+        </li>
+</ul></div>
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <div class="version-switcher__container dropdown">
+    <button id="pst-version-switcher-button-2"
+      type="button"
+      class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle"
+      data-bs-toggle="dropdown"
+      aria-haspopup="listbox"
+      aria-controls="pst-version-switcher-list-2"
+      aria-label="Version switcher list"
+    >
+      Choose version  <!-- this text may get changed later by javascript -->
+      <span class="caret"></span>
+    </button>
+    <div id="pst-version-switcher-list-2"
+      class="version-switcher__menu dropdown-menu list-group-flush py-0"
+      role="listbox" aria-labelledby="pst-version-switcher-button-2">
+      <!-- dropdown will be populated by javascript on page load -->
+    </div>
+  </div>
+`);
+</script></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../tutorials.html">
+                        Tutorials
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../how-to.html">
+                        How-to Guides
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../explanations.html">
+                        Explanations
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../reference.html">
+                        Reference
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/PandABlocks/PandABlocks-server" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/PandABlocks-server" title="PyPI" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fas fa-cube fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">PyPI</span></a>
+        </li>
+</ul></div>
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <div class="version-switcher__container dropdown">
+    <button id="pst-version-switcher-button-3"
+      type="button"
+      class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle"
+      data-bs-toggle="dropdown"
+      aria-haspopup="listbox"
+      aria-controls="pst-version-switcher-list-3"
+      aria-label="Version switcher list"
+    >
+      Choose version  <!-- this text may get changed later by javascript -->
+      <span class="caret"></span>
+    </button>
+    <div id="pst-version-switcher-list-3"
+      class="version-switcher__menu dropdown-menu list-group-flush py-0"
+      role="listbox" aria-labelledby="pst-version-switcher-button-3">
+      <!-- dropdown will be populated by javascript on page load -->
+    </div>
+  </div>
+`);
+</script></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="building.html">Building and Configuring Panda Server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="capture.html">Data Capture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="commands.html">Command Interface</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Configuration Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fields.html">Blocks, Fields and Attributes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../genindex.html">Index</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/PandABlocks/PandABlocks-server/releases">Release Notes</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../reference.html" class="nav-link">Reference</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">Configuration Files</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="configuration-files">
+<span id="config"></span><h1>Configuration Files<a class="headerlink" href="#configuration-files" title="Link to this heading">#</a></h1>
+<p>On startup the Panda Server loads its configuration from three files:
+<code class="docutils literal notranslate"><span class="pre">config</span></code>, <code class="docutils literal notranslate"><span class="pre">registers</span></code>, <code class="docutils literal notranslate"><span class="pre">description</span></code>.  These are loaded from the
+<code class="docutils literal notranslate"><span class="pre">config_d</span></code> directory in build directory when running the basic simulation, and
+on Panda the configuration files are loaded from <code class="docutils literal notranslate"><span class="pre">/opt/share/panda/config_d</span></code>.</p>
+<p>The syntax of each configuration file is documented here.  The format of each
+field definition closely follows the format documented in :ref:<em>fields</em>.</p>
+<p>The three files have the following distinct functions.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>File</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">config</span></code></p></td>
+<td><p>Configuration: defines list of blocks, fields in each block,
+and the behaviour of each field.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">registers</span></code></p></td>
+<td><p>Registers: for each block and field defines the associated
+register offsets.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">description</span></code></p></td>
+<td><p>Description: optionally defines a description string for each
+block and field.</p></td>
+</tr>
+</tbody>
+</table>
+<p>All files have a common structure and indentation is used for structure.
+Comments begin with <code class="docutils literal notranslate"><span class="pre">#</span></code>, blocks are identified by their name in the first
+column, and fields are listed at the next level of indentation.</p>
+<section id="configuration-file-config">
+<h2>Configuration file <code class="docutils literal notranslate"><span class="pre">config</span></code><a class="headerlink" href="#configuration-file-config" title="Link to this heading">#</a></h2>
+<p>This file defines all of the blocks and fields available to this instance of
+Panda and is processed first.</p>
+<p>The syntax of a block definition is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">block</span><span class="o">-</span><span class="n">name</span> <span class="p">[</span> <span class="s2">&quot;[&quot;</span> <span class="n">count</span> <span class="s2">&quot;]&quot;</span> <span class="p">]</span>
+    <span class="p">[</span> <span class="n">field</span><span class="o">-</span><span class="n">definition</span> <span class="p">]</span><span class="o">*</span>
+</pre></div>
+</div>
+<p>This means that a block definition consists of a <em>block-name</em>, which can be any
+word used to name the block, optionally followed by a block <em>count</em> enclosed in
+square brackets, followed by any number of indented <em>field-definition</em>s.</p>
+<p>The syntax of a field definition is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">field</span><span class="o">-</span><span class="n">name</span> <span class="n">field</span><span class="o">-</span><span class="nb">type</span> <span class="p">[</span> <span class="n">field</span><span class="o">-</span><span class="nb">type</span><span class="o">-</span><span class="n">data</span> <span class="p">]</span>
+</pre></div>
+</div>
+<p>The <em>field-name</em> names the field, the <em>field-type</em> is a single word from the
+list documented below, and the <em>field-type-data</em> depended on the field type as
+documented.</p>
+<p>The <em>field type</em> determines the basic function of the field, what actions can
+be performed on the field, and how the field interacts with the hardware.
+Typically each field corresponds to a single register or function of the block.</p>
+<p>Many field type have an associated <em>field subtype</em> which is used to convert
+between the values show to the user of the server and the values written to or
+read from registers.</p>
+<section id="field-type">
+<h3>Field type<a class="headerlink" href="#field-type" title="Link to this heading">#</a></h3>
+<p>The following field types are defined.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">param</span></code> field-subtype [ <code class="docutils literal notranslate"><span class="pre">=</span></code> value ]</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">read</span></code> field-subtype</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">write</span></code> field-subtype</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">time</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">bit_out</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">pos_out</span></code> [ scale [ offset [ units ]]]</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ext_out</span></code> ( <code class="docutils literal notranslate"><span class="pre">timestamp</span></code> | <code class="docutils literal notranslate"><span class="pre">samples</span></code> | <code class="docutils literal notranslate"><span class="pre">bits</span></code> group )</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">bit_mux</span></code> [ <code class="docutils literal notranslate"><span class="pre">=</span></code> value ]</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">pos_mux</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">table</span></code></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl>
+<dt><code class="docutils literal notranslate"><span class="pre">param</span></code> field-subtype [ <code class="docutils literal notranslate"><span class="pre">=</span></code> value ]</dt><dd><p>A <code class="docutils literal notranslate"><span class="pre">param</span></code> field is used to define a single 32-bit value written to a
+register.  The <em>field-subtype</em> must be specified.  Optionally an initial
+value (only relevant when no state file has been loaded) can be specified.
+In this case the initial value is read as a raw unsigned integer which is
+written directly to the hardware on startup.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">read</span></code> field-subtype</dt><dd><p>A <code class="docutils literal notranslate"><span class="pre">read</span></code> field is used for read-only registers.  The <em>field-subtype</em> must
+be specified.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">write</span></code> field-subtype</dt><dd><p>A <code class="docutils literal notranslate"><span class="pre">write</span></code> field is used for write-only registers which trigger immediate
+actions on a block.  The <em>field-subtype</em> must be specified, and the <em>action</em>
+subtype is useful for <code class="docutils literal notranslate"><span class="pre">write</span></code> fields which take no data.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">time</span></code></dt><dd><p>Time fields behave like <code class="docutils literal notranslate"><span class="pre">param</span></code> fields, but need special treatment because
+the underlying value is 64-bits and so two registers need to be written.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">bit_out</span></code></dt><dd><p>This identifies an output bit.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">pos_out</span></code> [ scale [ offset [ units ]]]</dt><dd><p>This identifies a position bus output.  Optionally default values for the
+scale, offset, and units fields can be specified in the config file.  Note
+that these are only effective when there is no persistence file to load.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">ext_out</span></code> ext-extra</dt><dd><p>This identifies an entry on the extension bus which needs special treatment.
+The <em>ext-extra</em> field must be one of the following values:</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>ext-extra</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">timestamp</span></code></p></td>
+<td><p>Capture timestamp as a 64-bit value</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">samples</span></code></p></td>
+<td><p>Captures sample count for data capture.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">bits</span></code> group</p></td>
+<td><p>Defines fields which allow the bit bus to be captured.  The
+group number identifies which 32-bit group of 128 bits is
+captured.</p></td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">bit_mux</span></code> [ <code class="docutils literal notranslate"><span class="pre">=</span></code> value ]</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">pos_mux</span></code></div>
+</div>
+<blockquote>
+<div><p>These two are configuration settings for selecting inputs, and behave like
+<code class="docutils literal notranslate"><span class="pre">param</span></code> fields.  As for <code class="docutils literal notranslate"><span class="pre">param</span></code> a default value can be assigned to
+<code class="docutils literal notranslate"><span class="pre">bit_mux</span></code>, but the only useful value is 129 (<code class="docutils literal notranslate"><span class="pre">ONE</span></code>).</p>
+</div></blockquote>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">table</span></code> [ row-words ]</dt><dd><p>Tables are treated specially.</p>
+</dd>
+</dl>
+</section>
+<section id="field-subtype">
+<h3>Field subtype<a class="headerlink" href="#field-subtype" title="Link to this heading">#</a></h3>
+<p>The following field subtype can follow a <code class="docutils literal notranslate"><span class="pre">param</span></code>, <code class="docutils literal notranslate"><span class="pre">read</span></code> or <code class="docutils literal notranslate"><span class="pre">write</span></code> field
+type:</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Type</p></th>
+<th class="head"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">uint</span></code> [ max-value ]</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">int</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">scalar</span></code> scale [ offset [ units ]]</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">bit</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">action</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">lut</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">enum</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">position</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">time</span></code></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Note that <code class="docutils literal notranslate"><span class="pre">enum</span></code> must be followed by indented lines each consisting of a
+number followed by a string: the string is the enumeration value written to
+the user, the number is the value written to the register.</p>
+</section>
+</section>
+<section id="register-file-registers">
+<h2>Register file <code class="docutils literal notranslate"><span class="pre">registers</span></code><a class="headerlink" href="#register-file-registers" title="Link to this heading">#</a></h2>
+<p>This file defines the register assignments for each block and register.  The
+body of this file should contain a sequencer of block and field definitions
+repeating the <code class="docutils literal notranslate"><span class="pre">config</span></code> file, except that the field type specification is
+replaced by a type specific register definition.</p>
+<p>So a block definition is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">block</span><span class="o">-</span><span class="n">name</span> <span class="p">{</span> <span class="p">[</span> <span class="s2">&quot;S&quot;</span> <span class="p">]</span> <span class="n">block</span><span class="o">-</span><span class="n">register</span> <span class="o">|</span> <span class="s2">&quot;X&quot;</span> <span class="p">}</span> <span class="p">[</span> <span class="n">extension</span><span class="o">-</span><span class="n">module</span> <span class="p">]</span>
+    <span class="p">[</span> <span class="n">field</span><span class="o">-</span><span class="n">definition</span> <span class="p">]</span><span class="o">*</span>
+</pre></div>
+</div>
+<p>If the <em>block-register</em> number is prefixed with <code class="docutils literal notranslate"><span class="pre">S</span></code> then the same block
+register number can be shared with multiple blocks: this allows a single
+hardware implementation to be presented as multiple software blocks.  If <code class="docutils literal notranslate"><span class="pre">X</span></code>
+is used instead of specifying <em>block-register</em> then no fields can use registers,
+so must be extension fields with no register linkage.</p>
+<p>The register number can be followed by an <em>extension-module</em> which is used to
+identify this block to the extension server, and will enable use of the
+extension register syntax defined below.</p>
+<p>A field definition is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">field</span><span class="o">-</span><span class="n">definition</span> <span class="o">=</span> <span class="n">field</span><span class="o">-</span><span class="n">name</span> <span class="n">register</span><span class="o">-</span><span class="n">specification</span>
+</pre></div>
+</div>
+<p>where <em>register-specification</em> depends on the associated field type as
+follows:</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Class</p></th>
+<th class="head"><p>Register syntax</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">param</span></code></p></td>
+<td><p>register | write-extension</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">read</span></code></p></td>
+<td><p>register | read-extension</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">write</span></code></p></td>
+<td><p>register | write-extension</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">time</span></code></p></td>
+<td><p>low-register high-register</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">bit_out</span></code></p></td>
+<td><p>( bit-index )N</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">pos_out</span></code></p></td>
+<td><p>( pos-index )N</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ext_out</span> <span class="pre">timestamp</span></code></p></td>
+<td><p>ext-index ext-index</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">ext_out</span></code> other</p></td>
+<td><p>ext-index</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">bit_mux</span></code></p></td>
+<td><p>register</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">pos_mux</span></code></p></td>
+<td><p>register</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">table</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">short</span></code> size init-reg fill-reg length-reg</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">table</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">long</span></code> <code class="docutils literal notranslate"><span class="pre">2^</span></code>size base-reg length-reg</p></td>
+</tr>
+</tbody>
+</table>
+<p>where the syntax <code class="docutils literal notranslate"><span class="pre">(...)N</span></code> means that the given register number is repeated N
+times where N is the number of instances of the block.  See below for an
+explanation of <em>read-extension</em> and <em>write-extension</em>.</p>
+<section id="extension-register-syntax">
+<h3>Extension register syntax<a class="headerlink" href="#extension-register-syntax" title="Link to this heading">#</a></h3>
+<p>If the extension server is enabled (with the <code class="docutils literal notranslate"><span class="pre">-X</span></code> command line option on the
+server) and if an extension module has been loaded as part of the block
+specification then <code class="docutils literal notranslate"><span class="pre">param</span></code>, <code class="docutils literal notranslate"><span class="pre">read</span></code>, and <code class="docutils literal notranslate"><span class="pre">write</span></code> subtypes can all be
+redirected to the extension server using the <em>read-extension</em> and
+<em>write-extension</em> syntax:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">read</span><span class="o">-</span><span class="n">extension</span> <span class="o">=</span> <span class="p">[</span> <span class="n">read</span><span class="o">-</span><span class="n">reg</span> <span class="p">]</span><span class="o">*</span> <span class="s2">&quot;X&quot;</span> <span class="n">field</span><span class="o">-</span><span class="n">spec</span>
+<span class="n">write</span><span class="o">-</span><span class="n">extension</span> <span class="o">=</span> <span class="p">[</span> <span class="n">read</span><span class="o">-</span><span class="n">reg</span> <span class="p">]</span><span class="o">*</span> <span class="p">[</span> <span class="s2">&quot;W&quot;</span> <span class="p">[</span> <span class="n">write</span><span class="o">-</span><span class="n">reg</span> <span class="p">]</span><span class="o">*</span> <span class="p">]</span> <span class="s2">&quot;X&quot;</span> <span class="n">field</span><span class="o">-</span><span class="n">spec</span>
+</pre></div>
+</div>
+<p>In this syntax <em>field-spec</em> is passed through to the associated
+<em>extension-module</em> to create the binding between this field and the extension
+server.  The specified <em>read-reg</em>s and <em>write-reg</em>s will be used when
+processing this field.</p>
+<p>See :ref:<em>extension</em> for more details on extension fields.</p>
+</section>
+</section>
+<section id="description-file-description">
+<h2>Description file <code class="docutils literal notranslate"><span class="pre">description</span></code><a class="headerlink" href="#description-file-description" title="Link to this heading">#</a></h2>
+<p>The entire content of the description file is optional.  The basic syntax is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">block</span><span class="o">-</span><span class="n">name</span> <span class="n">block</span><span class="o">-</span><span class="n">description</span>
+    <span class="p">[</span> <span class="n">field</span> <span class="p">]</span><span class="o">*</span>
+</pre></div>
+</div>
+<p>where field is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">field</span><span class="o">-</span><span class="n">name</span> <span class="n">field</span><span class="o">-</span><span class="n">description</span>
+</pre></div>
+</div>
+<p>and the description is any newline terminated string in UTF-8 format.</p>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="commands.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Command Interface</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="fields.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Blocks, Fields and Attributes</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-file-config">Configuration file <code class="docutils literal notranslate"><span class="pre">config</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#field-type">Field type</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#field-subtype">Field subtype</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#register-file-registers">Register file <code class="docutils literal notranslate"><span class="pre">registers</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extension-register-syntax">Extension register syntax</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#description-file-description">Description file <code class="docutils literal notranslate"><span class="pre">description</span></code></a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/PandABlocks/PandABlocks-server/edit/master/docs/reference/config.rst">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../_sources/reference/config.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.2.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
